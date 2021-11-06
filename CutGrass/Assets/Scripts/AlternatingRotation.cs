@@ -11,26 +11,21 @@ public class AlternatingRotation : MonoBehaviour
 
     bool isParentBallA = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            //change parent ball
+            //change parent ball if parent ball is A
             if(isParentBallA)
             {
-                Debug.Log("inputReceived");
-                ChangeParentBall(BallA,Connector,BallB);
+                ChangeParentBall(BallA, Connector, BallB);
                 isParentBallA = false;
             }
             else
             {
+                //else change parent to ball B
                 ChangeParentBall(BallB, Connector, BallA);
                 isParentBallA = true;
             }
@@ -38,6 +33,8 @@ public class AlternatingRotation : MonoBehaviour
         }
     }
 
+    //changes parent ball based on mouse input to create the
+    //alternating rotating motion
     private void ChangeParentBall(Transform parentball, Transform connector, Transform childball)
     {
         parentball.DetachChildren();
